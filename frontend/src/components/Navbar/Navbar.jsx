@@ -1,16 +1,71 @@
-import React from 'react'
+import React, { useState, useRef, useEffect } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 import './Navbar.css'
 import { assets } from '../../assets/assets'
 
+const MENU_ITEMS = [
+  { label: 'Home', path: '/' },
+  { label: 'Menu', path: '/placeorder' },
+  { label: 'Mobile-app', path: '/placeorder' },
+  { label: 'Contact Us', path: '/placeorder' },
+]
+
 const Navbar = () => {
+  const [activeIndex, setActiveIndex] = useState(0)
+  const [underlineStyle, setUnderlineStyle] = useState({ left: 0, width: 0 })
+  const menuRef = useRef(null)
+  const itemRefs = useRef([])
+  const location = useLocation()
+
+  const updateUnderline = (index = activeIndex) => {
+    const el = itemRefs.current[index]
+    if (!el) return
+
+    const left = el.offsetLeft
+    const width = el.offsetWidth
+
+    setUnderlineStyle({ left, width })
+  }
+
+  // initialize and handle resize
+  useEffect(() => {
+    updateUnderline(activeIndex)
+    const handleResize = () => updateUnderline(activeIndex)
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  // update underline when activeIndex changes
+  useEffect(() => {
+    updateUnderline(activeIndex)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeIndex])
+
+  // update activeIndex when route changes
+  useEffect(() => {
+    const idx = MENU_ITEMS.findIndex((m) => m.path === location.pathname)
+    setActiveIndex(idx === -1 ? 0 : idx)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location.pathname])
+
   return (
     <div className='navbar'>
       <img src={assets.logo} alt="" className="logo" />
-      <ul className="navbar-menu">
-        <li>Home</li>
-        <li>Menu</li>
-        <li>Mobile-app</li>
-        <li>Contact Us</li>
+      <ul className="navbar-menu" ref={menuRef}>
+        {MENU_ITEMS.map((item, idx) => (
+          <li
+            key={item.label}
+            ref={(el) => (itemRefs.current[idx] = el)}
+            className={idx === activeIndex ? 'active' : ''}
+          >
+            <Link to={item.path}>{item.label}</Link>
+          </li>
+        ))}
+        <span
+          className="underline"
+          style={{ left: underlineStyle.left, width: underlineStyle.width }}
+        />
       </ul>
       <div className="navbar-right">
         <img src={assets.search_icon} alt="" />

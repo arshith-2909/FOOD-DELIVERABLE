@@ -1,0 +1,101 @@
+.navbar {
+    padding: 12px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    width: 150px;
+    display: block;
+}
+
+.navbar-menu {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+    font-size: 20px;
+    color: #49557e;
+    position: relative; /* for absolute underline */
+    margin: 0;
+    padding: 0 0 8px 0; /* bottom padding for underline room */
+}
+
+.navbar-right {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+
+.navbar button {
+    background: transparent;
+    font-size: 16px;
+    border: 1px solid #ff5722;
+    padding: 10px 30px;
+    border-radius: 50px;
+    cursor: pointer;
+    color: #49557e;
+    transition: background-color 0.18s ease, color 0.18s ease, transform 0.12s ease;
+}
+
+.navbar button:hover {
+    background-color: rgba(255, 87, 34, 0.08);
+    color: #de7f62;
+    transform: translateY(-1px);
+}
+
+/* Menu item styles for clickable underline */
+.navbar-menu li {
+    list-style: none;
+    padding: 0; /* move padding to the link for better hit area */
+}
+
+.navbar-menu li a {
+    display: inline-block;
+    padding: 6px 8px;
+    cursor: pointer;
+    color: inherit;
+    text-decoration: none;
+}
+
+.navbar-menu li.active {
+    color: #ff5722;
+}
+
+.navbar-menu .underline {
+    position: absolute;
+    bottom: 0;
+    height: 3px;
+    background: #ff5722;
+    left: 0;
+    width: 0;
+    border-radius: 2px;
+    transition: left 0.18s ease, width 0.18s ease;
+}
+
+/* Search / basket icon container and badge */
+.navbar-right img {
+    display: block;
+}
+
+.navbar-search-icon {
+    position: relative; /* allow absolute positioning of the dot */
+    display: inline-block;
+}
+
+.navbar-search-icon img {
+    display: block;
+}
+
+.navbar-search-icon .dot {
+    position: absolute;
+    top: -4px;
+    right: -6px;
+    width: 10px;
+    height: 10px;
+    background: #ff5722; /* accent color */
+    border-radius: 50%;
+    border: 2px solid #fff; /* small white ring */
+    box-shadow: 0 0 0 2px rgba(255,87,34,0.08);
+}
+
