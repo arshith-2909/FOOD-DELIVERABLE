@@ -8,10 +8,6 @@ import PlaceOrder from './pages/PlaceOrder/PlaceOrder'
 const App = () => {
   return (
       <div className='app'>
-        {/* debug banner - remove after verifying rendering */}
-        <div style={{background: '#ff6', padding: '8px', textAlign: 'center'}}>
-          App rendering check — if you see this, React is mounted.
-        </div>
         <Navbar/>
         <Routes>
           <Route path='/' element={<Home/>} />

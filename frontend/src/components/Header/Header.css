@@ -1,0 +1,77 @@
+/* Header hero with background image from public/header_img.png */
+.header {
+	background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('/header_img.png') center/cover no-repeat;
+	min-height: 56vh;
+	display: flex;
+	align-items: center;
+	color: #fff;
+	position: relative;
+    border-radius: 12px;
+}
+
+/* Fade-in animation for header (appears on reload / mount) */
+@keyframes fadeInUp {
+	from { opacity: 0; transform: translateY(14px); }
+	to { opacity: 1; transform: translateY(0); }
+}
+
+/* smoother animation: longer duration, nicer easing, and hint to browser for optimization */
+.header {
+	will-change: opacity, transform;
+	/* slower, smoother entrance */
+	animation: fadeInUp 1000ms cubic-bezier(.16,.84,.24,1) both;
+}
+
+/* animate the contents slightly after the hero to create a smooth layered entrance */
+.header-contents {
+	will-change: opacity, transform;
+	/* slightly delayed and slower than the hero for a layered effect */
+	animation: fadeInUp 800ms cubic-bezier(.16,.84,.24,1) both;
+	animation-delay: 180ms;
+}
+
+.header-contents {
+	max-width: 900px;
+	padding: 48px 32px;
+	margin-left: 40px;
+}
+
+.header-contents h2 {
+	font-size: 2.25rem;
+	margin-bottom: 12px;
+	line-height: 1.05;
+}
+
+.header-contents p {
+	color: rgba(255,255,255,0.9);
+	margin-bottom: 18px;
+	font-size: 1rem;
+	max-width: 560px;
+}
+
+.header-contents button {
+	background: #f6f6f6;
+	color: #070606;
+	border: none;
+	padding: 10px 20px;
+	border-radius: 28px;
+	cursor: pointer;
+	font-weight: 600;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+	.header {
+		min-height: 44vh;
+		padding: 24px 0;
+		align-items: flex-end;
+	}
+	.header-contents {
+		margin-left: 18px;
+		padding: 28px 18px;
+	}
+	.header-contents h2 {
+		font-size: 1.6rem;
+	}
+}
+

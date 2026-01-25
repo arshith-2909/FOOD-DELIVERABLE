@@ -5,9 +5,10 @@ import { assets } from '../../assets/assets'
 
 const MENU_ITEMS = [
   { label: 'Home', path: '/' },
-  { label: 'Menu', path: '/placeorder' },
-  { label: 'Mobile-app', path: '/placeorder' },
-  { label: 'Contact Us', path: '/placeorder' },
+  // these are non-routing menu items — keep as actions (don't navigate)
+  { label: 'Menu', path: null },
+  { label: 'Mobile-app', path: null },
+  { label: 'Contact Us', path: null },
 ]
 
 const Navbar = () => {
@@ -59,7 +60,17 @@ const Navbar = () => {
             ref={(el) => (itemRefs.current[idx] = el)}
             className={idx === activeIndex ? 'active' : ''}
           >
-            <Link to={item.path}>{item.label}</Link>
+            {item.path ? (
+              <Link to={item.path}>{item.label}</Link>
+            ) : (
+              <button
+                type="button"
+                className="nav-action"
+                onClick={() => setActiveIndex(idx)}
+              >
+                {item.label}
+              </button>
+            )}
           </li>
         ))}
         <span

@@ -58,6 +58,16 @@
     text-decoration: none;
 }
 
+.navbar-menu li .nav-action {
+    display: inline-block;
+    padding: 6px 8px;
+    cursor: pointer;
+    color: inherit;
+    background: transparent;
+    border: none;
+    font: inherit;
+}
+
 .navbar-menu li.active {
     color: #ff5722;
 }

@@ -1,11 +1,13 @@
 import React from 'react'
 import './Home.css'
+import Header from '../../components/Header/Header'
+import ExploreMenu from '../../components/ExploreMenu/ExploreMenu'
 
 const Home = () => {
   return (
-    <div style={{padding: '24px'}}>
-      <h1>Home</h1>
-      <p>Welcome to the Home page. Replace this with real content.</p>
+    <div>
+      <Header />
+      <ExploreMenu />
     </div>
   )
 }
