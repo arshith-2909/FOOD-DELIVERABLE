@@ -35,14 +35,15 @@ const Footer = () => {
 
         <div className="footer-section">
           <h4>Get in touch</h4>
-          <p className="contact"><a href="mailto:hello@fooddeliverables.com">contact@fooddeliverables.com</a></p>
-          <p className="contact"><a href="tel:+911234567890">+91 12345 67890</a></p>
+          <p className="contact"><a href="mailto:contact@fooddeliverables.com">contact@fooddeliverables.com</a></p>
+          <p className="contact"><a href="tel:+91-1234567890">+91-12345 67890</a></p>
 
           
         </div>
       </div>
 
-      <div className="footer-bottom">© {new Date().getFullYear()} Food Deliverables. All rights reserved.</div>
+  <div className="footer-divider" />
+  <div className="footer-bottom">© {new Date().getFullYear()} Food Deliverables. All rights reserved.</div>
     </footer>
   )
 }

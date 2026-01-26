@@ -27,6 +27,14 @@
 .social-row a:hover img{ transform: translateY(-3px); filter: none }
 .footer-bottom{ text-align:center; margin-top:18px; font-size:0.9rem; color:#9fb6d3 }
 
+.footer-divider{
+	width:100%;
+	height:2px; /* slightly thicker */
+	background: rgb(97, 93, 93); /* dark line */
+	margin:20px 0 12px; /* give a bit more vertical space */
+	border-radius:2px;
+}
+
 /* Responsive */
 @media (max-width: 900px){
 	.footer-inner{ grid-template-columns: 1fr 1fr; }

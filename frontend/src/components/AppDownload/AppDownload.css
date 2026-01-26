@@ -1,0 +1,34 @@
+/* App download strip shown above footer */
+.app-download{
+	background: linear-gradient(180deg, #f7fbff, #eef6ff);
+	padding: 18px 12px;
+	border-top: 1px solid rgba(0,0,0,0.04);
+	border-bottom: 1px solid rgba(0,0,0,0.03);
+}
+.app-download-inner{
+	max-width:1100px;
+	margin:0 auto;
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+	justify-content:center;
+	gap:12px;
+	text-align:center;
+}
+.download-left h3{ margin:0; font-size:1.1rem; color:#0b2540 }
+.download-left .small{ margin:4px 0 0; color:#000000; font-size:2rem; text-align:center; font-weight: 500; }
+.download-badges{ display:flex; gap:14px; align-items:center; justify-content:center; margin-top:10px }
+.download-badges .badge img{ height:48px; width:auto; display:block; padding:8px; box-sizing:content-box }
+
+@media (max-width:720px){
+	.app-download-inner{ flex-direction:column; align-items:center }
+	.download-badges .badge img{ height:44px }
+}
+
+.download-appname{
+	margin:6px 0 0;
+	font-weight:500;
+	font-size:2rem;
+	color:#0b2540;
+	line-height:1.1;
+}
