@@ -1,0 +1,182 @@
+.food-display {
+  padding: 20px 0;
+}
+
+.food-heading {
+  font-size: 1.4rem;
+  margin-bottom: 16px;
+}
+
+/* 🔥 EXACTLY 4 ITEMS PER ROW */
+.food-grid {
+  display: grid;
+  /* Four columns on wide screens with a comfortable minimum so cards stay large */
+  grid-template-columns: repeat(4, minmax(220px, 1fr));
+  gap: 24px;
+  align-items: stretch;
+  width: 100%;
+}
+
+/* FOOD CARD */
+.food-card {    
+  background: #f5f2f2;
+  padding: 20px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  min-height: 360px;
+  /* initial state for smooth fade-in on reload/mount */
+  opacity: 0;
+  transform: translateY(12px);
+  /* slowed animation for a smoother flow */
+  animation: fadeInUp 1000ms cubic-bezier(.2,.9,.2,1) both;
+}
+
+/* 🔥 BIGGER IMAGE THAT FITS SCREEN */
+.food-image {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  border-radius: 14px;
+  position: relative; /* for the image counter overlay */
+}
+
+.food-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* FOOD INFO */
+.food-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.food-name {
+  font-weight: 700;
+  font-size: 1.12rem;
+  color: #222;
+}
+
+/* DESCRIPTION (3 lines max) */
+.food-description {
+  color: #555;
+  font-size: 1rem;
+  line-height: 1.35;
+  max-height: 4.05rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* RATING */
+.food-rating {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.food-rating img {
+  width: 72px;
+  height: auto;
+}
+
+/* overlay counter on image (bottom-right) */
+.image-counter{
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  background: rgba(255,255,255,0.95);
+  padding: 6px 8px;
+  border-radius: 20px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.10);
+}
+.counter-btn{
+  /* slightly smaller round buttons for + / - */
+  width:24px;
+  height:24px;
+  border-radius:50%;
+  border:none;
+  background:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  font-weight:700;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+  font-size: 0.95rem; /* base font-size for the +/- inside */
+}
+.counter-btn:disabled{ opacity:0.45; cursor:not-allowed }
+.counter-btn.plus{ background:#eaf8f1; color:#2e7d32; font-size:1.05rem }
+.counter-btn.minus{ background:#fff5f3; color:#c62828; font-size:0.95rem }
+.counter-value{ font-weight:700; min-width:16px; text-align:center; font-size:0.82rem }
+
+/* single + button styling when item not in cart */
+.counter-btn.plus.single{
+  width:36px;
+  height:36px;
+  font-size:1.15rem;
+  padding:0;
+}
+
+.rating-value {
+  color: #444;
+  font-weight: 700;
+  font-size: 0.86rem;
+}
+
+/* ADD BUTTON */
+.add-btn {
+  background: #ff5722;
+  color: #fff;
+  border: none;
+  padding: 12px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  margin-top: auto;
+}
+
+.add-btn:hover {
+  background: #e64a19;
+}
+
+/* price block (replaces the Add button) */
+.food-price-block{
+  margin-top: auto;
+  font-weight: 700;
+  color: #222;
+  font-size: 1.02rem;
+  text-align: center;
+}
+
+/* 📱 RESPONSIVE */
+@media (max-width: 1200px) {
+  .food-grid {
+    grid-template-columns: repeat(3, minmax(200px, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .food-grid {
+    grid-template-columns: repeat(2, minmax(180px, 1fr));
+  }
+}
+
+@media (max-width: 520px) {
+  .food-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@keyframes fadeInUp{
+  from{ opacity: 0; transform: translateY(12px) }
+  to{ opacity: 1; transform: translateY(0) }
+}

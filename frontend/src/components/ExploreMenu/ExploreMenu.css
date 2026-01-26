@@ -34,10 +34,11 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  border-radius: 8px;
+  border-radius: 50%; /* make image circular */
   margin-bottom: 8px;
   box-sizing: border-box;
   border: 2px solid transparent; /* reserve border space to avoid layout shift */
+  background: transparent; /* remove square background */
 }
 
 .menu-image img{
@@ -79,8 +80,34 @@
 .menu-item.active .menu-name{
   color: #ff5722;
 }
+.menu-item.active .menu-name{
+  color: #ff5722;
+}
+
+/* light horizontal line under each menu item (after image and name) */
+.menu-item::after{
+  content: "";
+  display: block;
+  width: 60%;
+  height: 6px;
+  background: rgba(0,0,0,0.06);
+  margin: 10px auto 0;
+  border-radius: 1px;
+}
 
 .menu-item:focus-within, .menu-item:focus {
   outline: 3px solid rgba(255,87,34,0.12);
   outline-offset: 4px;
+}
+
+/* Divider after the explore menu */
+.explore-divider{
+  width: 100%;
+  height: 2px;
+  /* slightly darker center with softer fade at edges */
+  background: linear-gradient(90deg, rgba(0,0,0,0.10), rgba(0,0,0,0.14) 40%, rgba(0,0,0,0.10));
+  margin: 18px 0 28px;
+  /* increase shadow slightly for more depth */
+  box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+  border-radius: 2px;
 }
