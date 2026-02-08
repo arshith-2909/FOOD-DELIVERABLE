@@ -16,9 +16,11 @@
     gap: 20px;
     font-size: 20px;
     color: #49557e;
-    position: relative; /* for absolute underline */
+    position: relative;
+    /* for absolute underline */
     margin: 0;
-    padding: 0 0 8px 0; /* bottom padding for underline room */
+    padding: 0 0 8px 0;
+    /* bottom padding for underline room */
 }
 
 .navbar-right {
@@ -47,7 +49,8 @@
 /* Menu item styles for clickable underline */
 .navbar-menu li {
     list-style: none;
-    padding: 0; /* move padding to the link for better hit area */
+    padding: 0;
+    /* move padding to the link for better hit area */
 }
 
 .navbar-menu li a {
@@ -89,7 +92,8 @@
 }
 
 .navbar-search-icon {
-    position: relative; /* allow absolute positioning of the dot */
+    position: relative;
+    /* allow absolute positioning of the dot */
     display: inline-block;
 }
 
@@ -103,9 +107,100 @@
     right: -6px;
     width: 10px;
     height: 10px;
-    background: #ff5722; /* accent color */
+    background: #ff5722;
+    /* accent color */
     border-radius: 50%;
-    border: 2px solid #fff; /* small white ring */
-    box-shadow: 0 0 0 2px rgba(255,87,34,0.08);
+    border: 2px solid #fff;
+    /* small white ring */
+    box-shadow: 0 0 0 2px rgba(255, 87, 34, 0.08);
 }
 
+.navbar-hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.menu-close-icon {
+    display: none;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 900px) {
+    .navbar .logo {
+        width: 120px;
+    }
+
+    .navbar-menu {
+        gap: 15px;
+        font-size: 17px;
+    }
+
+    .navbar-right {
+        gap: 20px;
+    }
+
+    .navbar button {
+        padding: 8px 20px;
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        /* Hidden by default */
+        width: 60%;
+        height: 100vh;
+        background-color: #fff;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding-top: 80px;
+        gap: 25px;
+        z-index: 1000;
+        box-shadow: -4px 0 15px rgba(0, 0, 0, 0.1);
+        transition: right 0.3s ease-in-out;
+    }
+
+    .navbar-menu.active {
+        right: 0;
+        /* Slide in */
+    }
+
+    .navbar-hamburger {
+        display: block;
+    }
+
+    .menu-close-icon {
+        display: block;
+        position: absolute;
+        top: 25px;
+        left: 25px;
+        width: 25px;
+        cursor: pointer;
+    }
+
+    .navbar-menu .underline {
+        display: none;
+        /* Hide underline animation on mobile */
+    }
+
+    .navbar button {
+        /* Hide "Sign In" button text or adjust if needed, 
+           or maybe move it inside the menu? 
+           For now, let's keep it visible in header or hide if too crowded */
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar button {
+        padding: 7px 15px;
+        font-size: 14px;
+    }
+
+    .navbar .logo {
+        width: 110px;
+    }
+}

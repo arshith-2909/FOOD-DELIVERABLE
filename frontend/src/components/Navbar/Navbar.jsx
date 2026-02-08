@@ -28,10 +28,17 @@ const Navbar = () => {
     setUnderlineStyle({ left, width })
   }
 
+  const [menuOpen, setMenuOpen] = useState(false)
+
   // initialize and handle resize
   useEffect(() => {
     updateUnderline(activeIndex)
-    const handleResize = () => updateUnderline(activeIndex)
+    const handleResize = () => {
+        updateUnderline(activeIndex)
+        if (window.innerWidth > 768) {
+            setMenuOpen(false)
+        }
+    }
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -47,13 +54,21 @@ const Navbar = () => {
   useEffect(() => {
     const idx = MENU_ITEMS.findIndex((m) => m.path === location.pathname)
     setActiveIndex(idx === -1 ? 0 : idx)
+    setMenuOpen(false) // Close menu on route change
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.pathname])
 
   return (
     <div className='navbar'>
       <img src={assets.logo} alt="" className="logo" />
-      <ul className="navbar-menu" ref={menuRef}>
+      
+      <ul className={`navbar-menu ${menuOpen ? 'active' : ''}`} ref={menuRef}>
+        <img 
+            src={assets.cross_icon} 
+            alt="close" 
+            className="menu-close-icon" 
+            onClick={() => setMenuOpen(false)} 
+        />
         {MENU_ITEMS.map((item, idx) => (
           <li
             key={item.label}
@@ -61,12 +76,15 @@ const Navbar = () => {
             className={idx === activeIndex ? 'active' : ''}
           >
             {item.path ? (
-              <Link to={item.path}>{item.label}</Link>
+              <Link to={item.path} onClick={() => setMenuOpen(false)}>{item.label}</Link>
             ) : (
               <button
                 type="button"
                 className="nav-action"
-                onClick={() => setActiveIndex(idx)}
+                onClick={() => {
+                    setActiveIndex(idx)
+                    setMenuOpen(false)
+                }}
               >
                 {item.label}
               </button>
@@ -78,13 +96,19 @@ const Navbar = () => {
           style={{ left: underlineStyle.left, width: underlineStyle.width }}
         />
       </ul>
+
       <div className="navbar-right">
         <img src={assets.search_icon} alt="" />
         <div className="navbar-search-icon">
-            <img src={assets.basket_icon} alt="" />
+            <Link to='/cart'><img src={assets.basket_icon} alt="" /></Link>
             <div className="dot"></div>
         </div>
         <button>Sign In</button>
+        <div className="navbar-hamburger" onClick={() => setMenuOpen(true)}>
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4 6H20M4 12H20M4 18H20" stroke="#49557e" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+        </div>
       </div>
     </div>
   )
