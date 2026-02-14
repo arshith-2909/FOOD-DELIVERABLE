@@ -1,0 +1,9 @@
+/* Menu page responsive helpers */
+.menu-page { display:flex; gap:24px; }
+.menu-list{ flex:1 1 auto }
+.menu-sidebar{ flex:0 0 280px }
+
+@media (max-width:900px){
+	.menu-page{ flex-direction:column }
+	.menu-sidebar{ width:100% }
+}

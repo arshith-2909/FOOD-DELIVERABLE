@@ -1,0 +1,14 @@
+/* Place order responsive basics */
+.placeorder-container{
+	display:flex;
+	gap:24px;
+	align-items:flex-start;
+}
+
+.placeorder-form{ flex:1 1 60%; }
+.placeorder-summary{ flex:0 0 320px; }
+
+@media (max-width:900px){
+	.placeorder-container{ flex-direction:column; }
+	.placeorder-summary{ width:100%; }
+}

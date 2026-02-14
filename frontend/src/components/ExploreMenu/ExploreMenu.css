@@ -111,3 +111,16 @@
   box-shadow: 0 8px 18px rgba(0,0,0,0.08);
   border-radius: 2px;
 }
+
+/* Small screens: make menu horizontally scrollable for better thumb reach */
+@media (max-width: 520px) {
+  .menu-grid{
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    padding-bottom: 6px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .menu-item{ flex: 0 0 120px; min-width: 120px; }
+}

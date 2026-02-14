@@ -11,14 +11,25 @@ body {
   min-height: 100vh;
 }
 
+:root{
+  --app-max-width: 1200px;
+  --gap-sm: 12px;
+  --gap-md: 24px;
+  --accent: #ff5722;
+  --muted: #49557e;
+}
+
 a {
   text-decoration: none;
   color: inherit;
 }
 
 .app {
-  width: 80%;
-  margin: auto;
+  max-width: var(--app-max-width);
+  width: 100%;
+  margin: 0 auto;
+  padding-left: var(--gap-md);
+  padding-right: var(--gap-md);
 }
 
 @media (max-width: 768px) {

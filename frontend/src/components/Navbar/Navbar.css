@@ -151,7 +151,7 @@
         top: 0;
         right: -100%;
         /* Hidden by default */
-        width: 60%;
+        width: 80%;
         height: 100vh;
         background-color: #fff;
         flex-direction: column;
@@ -187,11 +187,18 @@
         /* Hide underline animation on mobile */
     }
 
-    .navbar button {
-        /* Hide "Sign In" button text or adjust if needed, 
-           or maybe move it inside the menu? 
-           For now, let's keep it visible in header or hide if too crowded */
+    /* On mobile, simplify header: hide some right-side icons to reduce clutter */
+    .navbar-right > img,
+    .navbar-right .navbar-search-icon,
+    .navbar-right button {
+        display: none;
     }
+
+    /* ensure hamburger remains visible and clickable */
+    .navbar-hamburger { display: block; }
+
+    /* make close icon bigger and tappable */
+    .menu-close-icon { width: 28px; height: 28px; }
 }
 
 @media (max-width: 480px) {
@@ -203,4 +210,7 @@
     .navbar .logo {
         width: 110px;
     }
+
+    /* full-screen menu on very small screens for easier tap targets */
+    .navbar-menu { width: 100%; }
 }

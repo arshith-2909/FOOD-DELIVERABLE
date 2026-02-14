@@ -75,3 +75,23 @@
 	}
 }
 
+@media (max-width: 480px) {
+	.header {
+		min-height: 36vh;
+		align-items: center;
+		background-position: top center;
+		border-radius: 10px;
+	}
+
+	.header-contents {
+		margin: 0 auto;
+		padding: 18px 12px;
+		text-align: center;
+		max-width: 92%;
+	}
+
+	.header-contents h2 { font-size: 1.25rem; }
+	.header-contents p { font-size: 0.95rem; }
+	.header-contents button { width: 100%; max-width: 260px; margin: 0 auto; }
+}
+
