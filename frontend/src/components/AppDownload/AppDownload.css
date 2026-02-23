@@ -5,30 +5,46 @@
 	border-top: 1px solid rgba(0,0,0,0.04);
 	border-bottom: 1px solid rgba(0,0,0,0.03);
 }
-.app-download-inner{
-	max-width:1100px;
-	margin:0 auto;
-	display:flex;
-	flex-direction:column;
-	align-items:center;
-	justify-content:center;
-	gap:12px;
-	text-align:center;
-}
+ .app-download-inner{
+	 max-width:1100px;
+	 margin:0 auto;
+	 display:flex;
+	 flex-direction:row;
+	 align-items:center;
+	 justify-content:center; /* center the inner content in full width */
+	 gap:20px;
+	 text-align:center; /* center text for the centered layout */
+	 flex-wrap:wrap; /* allow badges/text to wrap on smaller widths */
+ }
 .download-left h3{ margin:0; font-size:1.1rem; color:#0b2540 }
-.download-left .small{ margin:4px 0 0; color:#000000; font-size:2rem; text-align:center; font-weight: 500; }
+.download-left .small{ margin:4px 0 0; color:#333333; font-size:0.95rem; text-align:center; font-weight:500; }
 .download-badges{ display:flex; gap:14px; align-items:center; justify-content:center; margin-top:10px }
-.download-badges .badge img{ height:48px; width:auto; display:block; padding:8px; box-sizing:content-box }
+.download-badges .badge{ display:inline-flex; align-items:center; justify-content:center; padding:8px; border-radius:8px }
+.download-badges .badge img{ height:56px; width:auto; display:block }
 
-@media (max-width:720px){
-	.app-download-inner{ flex-direction:column; align-items:center }
-	.download-badges .badge img{ height:44px }
-}
-
+/* App name styling */
 .download-appname{
 	margin:6px 0 0;
-	font-weight:500;
-	font-size:2rem;
+	font-weight:600;
+	font-size:1.6rem;
 	color:#0b2540;
 	line-height:1.1;
+}
+
+/* RESPONSIVE: stack on smaller screens and increase tappable areas */
+@media (max-width:900px){
+	.app-download-inner{ flex-direction:column; align-items:center; text-align:center }
+	.download-left .small{ text-align:center }
+	.download-badges{ justify-content:center }
+}
+
+@media (max-width:520px){
+	.download-badges .badge img{ height:48px }
+	.download-appname{ font-size:1.25rem }
+}
+
+/* ensure badges have an accessible minimum touch target */
+@media (hover: none) and (pointer: coarse) {
+  .download-badges .badge{ padding:10px; }
+  .download-badges .badge img{ height:52px }
 }

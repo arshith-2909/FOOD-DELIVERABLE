@@ -4,7 +4,7 @@ import { assets } from '../../assets/assets'
 
 const AppDownload = () => {
 	return (
-		<section className="app-download">
+		<section id="app-download" className="app-download">
 			<div className="app-download-inner">
 				<div className="download-left">
 					<p className="small">For Better Experience Download</p>

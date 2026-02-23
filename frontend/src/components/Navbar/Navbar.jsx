@@ -1,14 +1,15 @@
 import React, { useState, useRef, useEffect } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import './Navbar.css'
 import { assets } from '../../assets/assets'
 
 const MENU_ITEMS = [
   { label: 'Home', path: '/' },
-  // these are non-routing menu items — keep as actions (don't navigate)
-  { label: 'Menu', path: null },
-  { label: 'Mobile-app', path: null },
-  { label: 'Contact Us', path: null },
+  // explicit route for Menu page
+  { label: 'Menu', path: '/menu' },
+  // these will trigger in-page scrolls
+  { label: 'Mobile-app', action: 'scroll', targetId: 'app-download' },
+  { label: 'Contact Us', action: 'scroll', targetId: 'site-footer' },
 ]
 
 const Navbar = () => {
@@ -17,6 +18,7 @@ const Navbar = () => {
   const menuRef = useRef(null)
   const itemRefs = useRef([])
   const location = useLocation()
+  const navigate = useNavigate()
 
   const updateUnderline = (index = activeIndex) => {
     const el = itemRefs.current[index]
@@ -29,6 +31,28 @@ const Navbar = () => {
   }
 
   const [menuOpen, setMenuOpen] = useState(false)
+
+  const handleAction = (item, idx) => {
+    setActiveIndex(idx)
+    setMenuOpen(false)
+
+    if (item.action === 'scroll' && item.targetId) {
+      const el = document.getElementById(item.targetId)
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        return
+      }
+
+      // If target not on current route, navigate to home then scroll after a tick
+      if (location.pathname !== '/') {
+        navigate('/')
+        setTimeout(() => {
+          const el2 = document.getElementById(item.targetId)
+          if (el2) el2.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }, 250)
+      }
+    }
+  }
 
   // initialize and handle resize
   useEffect(() => {
@@ -77,14 +101,19 @@ const Navbar = () => {
           >
             {item.path ? (
               <Link to={item.path} onClick={() => setMenuOpen(false)}>{item.label}</Link>
+            ) : item.action === 'scroll' ? (
+              <button
+                type="button"
+                className="nav-action"
+                onClick={() => handleAction(item, idx)}
+              >
+                {item.label}
+              </button>
             ) : (
               <button
                 type="button"
                 className="nav-action"
-                onClick={() => {
-                    setActiveIndex(idx)
-                    setMenuOpen(false)
-                }}
+                onClick={() => { setActiveIndex(idx); setMenuOpen(false) }}
               >
                 {item.label}
               </button>

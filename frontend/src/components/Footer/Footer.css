@@ -22,9 +22,11 @@
 .footer-section a:hover{ text-decoration:underline }
 .contact{ margin-top:6px; line-height:0.5}
 .contact a{ color: #d9ecff; padding: 6px 0; display:block }
-.social-row{ display:flex; gap:10px; margin-top:10px }
-.social-row img{ width:34px; height:34px; filter: grayscale(0.05); transition: transform .18s ease, filter .18s ease }
-.social-row a:hover img{ transform: translateY(-3px); filter: none }
+.social-row{ display:flex; gap:12px; margin-top:12px; align-items:center }
+.social-row a{ display:inline-flex; align-items:center; justify-content:center; width:44px; height:44px; border-radius:8px; background: rgba(255,255,255,0.02); }
+.social-row img{ width:28px; height:28px; filter: grayscale(0.05); transition: transform .18s ease, filter .18s ease }
+.social-row a:hover{ transform: translateY(-3px); }
+.social-row a:focus{ outline: 2px solid rgba(255,87,34,0.18); outline-offset: 2px }
 .footer-bottom{ text-align:center; margin-top:18px; font-size:0.9rem; color:#9fb6d3 }
 
 .footer-divider{
@@ -40,7 +42,19 @@
 	.footer-inner{ grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 520px){
-	.footer-inner{ grid-template-columns: 1fr; text-align:left }
-	.footer-brand{ margin-bottom:10px }
+	.footer-inner{ grid-template-columns: 1fr; text-align:center }
+	.footer-brand{ margin-bottom:16px; align-items:center }
+	.footer-section{ text-align:center }
+	.contact{ line-height:1.2 }
+	.contact a{ display:inline-block }
+	.social-row{ justify-content:center }
+	.footer-bottom{ text-align:center; padding-bottom:12px }
+}
+
+/* Extra small screens: increase tap targets */
+@media (max-width: 380px){
+  .social-row a{ width:48px; height:48px }
+  .footer-logo{ width:95px }
+  .tag{ font-size:0.9rem }
 }
 

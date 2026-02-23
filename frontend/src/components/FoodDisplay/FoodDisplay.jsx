@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react'
-import './FoodDisplay.css'
+import './FoodDIsplay.css'
 import { useStore } from '../../Context/StoreContext'
 import { assets, menu_list } from '../../assets/assets'
 
