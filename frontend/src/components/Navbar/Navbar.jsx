@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
+import LoginPopUp from '../LoginPopUp/loginPopUp'
 import './Navbar.css'
 import { assets } from '../../assets/assets'
 
@@ -31,6 +32,7 @@ const Navbar = () => {
   }
 
   const [menuOpen, setMenuOpen] = useState(false)
+  const [showLogin, setShowLogin] = useState(false)
 
   const handleAction = (item, idx) => {
     setActiveIndex(idx)
@@ -126,19 +128,21 @@ const Navbar = () => {
         />
       </ul>
 
-      <div className="navbar-right">
-        <img src={assets.search_icon} alt="" />
-        <div className="navbar-search-icon">
-            <Link to='/cart'><img src={assets.basket_icon} alt="" /></Link>
-            <div className="dot"></div>
-        </div>
-        <button>Sign In</button>
-        <div className="navbar-hamburger" onClick={() => setMenuOpen(true)}>
+    <div className="navbar-right">
+    <img src={assets.search_icon} alt="" />
+    <div className="navbar-search-icon">
+      <Link to='/cart'><img src={assets.basket_icon} alt="" /></Link>
+      <div className="dot"></div>
+    </div>
+    <button onClick={() => setShowLogin(true)}>Sign In</button>
+    <div className="navbar-hamburger" onClick={() => setMenuOpen(true)}>
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M4 6H20M4 12H20M4 18H20" stroke="#49557e" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
         </div>
       </div>
+    {/* Login popup rendered here so it's mounted by Navbar and can be toggled */}
+    <LoginPopUp open={showLogin} onClose={() => setShowLogin(false)} />
     </div>
   )
 }

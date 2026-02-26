@@ -1,0 +1,139 @@
+/* Login popup modal styles */
+
+.lp-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(10,12,16,0.5);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:2000;
+  padding:20px;
+}
+
+.lp-card{
+  background:#fff;
+  color:#111;
+  width:100%;
+  max-width:420px;
+  border-radius:12px;
+  padding:18px 18px 14px;
+  box-shadow:0 12px 40px rgba(12,12,14,0.18);
+  position:relative;
+}
+
+/* Close X */
+.lp-close{
+  position:absolute;
+  right:12px;
+  top:12px;
+  font-size:28px;
+  cursor:pointer;
+  color:#333;
+  user-select:none;
+}
+
+/* Header */
+.lp-header h3{
+  margin:0 0 6px;
+  font-size:1.25rem;
+}
+
+.lp-sub{
+  margin:0 0 12px;
+  color:#666;
+  font-size:0.95rem;
+}
+
+/* Form */
+.lp-form{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.lp-field{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+
+.lp-field span{
+  font-size:0.9rem;
+  color:#333;
+}
+
+.lp-field input{
+  padding:10px 12px;
+  border-radius:8px;
+  border:1px solid #ddd;
+  font-size:0.95rem;
+}
+
+/* Terms */
+.lp-terms{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  font-size:0.9rem;
+  color:#444;
+}
+
+.lp-terms input{
+  width:18px;
+  height:18px;
+}
+
+.lp-terms a{
+  color:tomato;
+  text-decoration:underline;
+}
+
+/* Submit Button */
+.lp-submit{
+  margin-top:6px;
+  padding:10px 14px;
+  background:tomato;
+  color:#fff;
+  border:none;
+  border-radius:8px;
+  font-weight:600;
+  cursor:pointer;
+}
+
+.lp-submit:hover{
+  opacity:0.9;
+}
+
+/* Footer */
+.lp-footer{
+  margin-top:12px;
+  color:#555;
+  font-size:0.95rem;
+}
+
+/* Footer link text */
+.lp-link{
+  cursor:pointer;
+  color:tomato;
+  font-weight:600;
+  margin-left:4px;
+  user-select:none;
+  text-decoration: underline;
+}
+
+.lp-link:hover{
+  opacity: 0.85;
+}
+
+/* Responsive */
+@media (max-width:480px){
+  .lp-card{
+    padding:16px;
+    border-radius:10px;
+  }
+
+  .lp-submit{
+    padding:12px;
+  }
+}
