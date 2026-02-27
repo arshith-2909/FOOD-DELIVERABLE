@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import LoginPopUp from '../LoginPopUp/loginPopUp'
 import './Navbar.css'
 import { assets } from '../../assets/assets'
+import { useStore } from '../../Context/StoreContext'
 
 const MENU_ITEMS = [
   { label: 'Home', path: '/' },
@@ -33,6 +34,7 @@ const Navbar = () => {
 
   const [menuOpen, setMenuOpen] = useState(false)
   const [showLogin, setShowLogin] = useState(false)
+  const { cartCount } = useStore()
 
   const handleAction = (item, idx) => {
     setActiveIndex(idx)
@@ -86,7 +88,7 @@ const Navbar = () => {
 
   return (
     <div className='navbar'>
-      <img src={assets.logo} alt="" className="logo" />
+      <Link to='/'><img src={assets.logo} alt="" className="logo" /></Link>
       
       <ul className={`navbar-menu ${menuOpen ? 'active' : ''}`} ref={menuRef}>
         <img 
@@ -132,7 +134,7 @@ const Navbar = () => {
     <img src={assets.search_icon} alt="" />
     <div className="navbar-search-icon">
       <Link to='/cart'><img src={assets.basket_icon} alt="" /></Link>
-      <div className="dot"></div>
+      {cartCount > 0 && <div className="dot"></div>}
     </div>
     <button onClick={() => setShowLogin(true)}>Sign In</button>
     <div className="navbar-hamburger" onClick={() => setMenuOpen(true)}>

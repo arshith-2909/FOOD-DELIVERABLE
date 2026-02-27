@@ -1,13 +1,16 @@
 import React from 'react'
 import './Header.css'
+import { useNavigate } from 'react-router-dom'
 
 const Header = () => {
+  const navigate = useNavigate()
+
   return (
     <div className='header'>
         <div className="header-contents">
             <h2>Order your favourite food here</h2>
             <p>Choose from a wide variety of delicious dishes and have them delivered to your doorstep.</p>
-            <button>View Menu</button>
+            <button type="button" onClick={() => navigate('/menu')}>View Menu</button>
         </div>
     </div>
   )

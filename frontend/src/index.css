@@ -11,6 +11,21 @@ body {
   min-height: 100vh;
 }
 
+/* Global responsive typography: scale down base font-size on smaller screens */
+html { font-size: 16px; }
+
+@media (max-width: 1000px) {
+  html { font-size: 15px; }
+}
+
+@media (max-width: 720px) {
+  html { font-size: 14px; }
+}
+
+@media (max-width: 420px) {
+  html { font-size: 13px; }
+}
+
 :root{
   --app-max-width: 1200px;
   --gap-sm: 12px;

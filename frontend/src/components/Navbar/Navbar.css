@@ -187,12 +187,39 @@
         /* Hide underline animation on mobile */
     }
 
-    /* On mobile, simplify header: hide some right-side icons to reduce clutter */
+    /* On mobile, keep header controls visible but compact */
     .navbar-right > img,
     .navbar-right .navbar-search-icon,
     .navbar-right button {
-        display: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 8px;
+        font-size: 14px;
     }
+
+    /* make search & cart icons clearer and tappable on mobile */
+    .navbar-right > img {
+        width:26px;
+        height:auto;
+        padding:6px;
+        border-radius:8px;
+        background: rgba(15,23,42,0.03);
+        display:inline-flex;
+        align-items:center;
+        justify-content:center;
+        cursor:pointer;
+        transition: background 0.12s ease, transform 0.08s ease;
+    }
+
+    .navbar-right > img:hover { background: rgba(15,23,42,0.06); transform: translateY(-1px) }
+
+    .navbar-search-icon img { width:26px; height:26px }
+    .navbar-search-icon { padding:4px; border-radius:8px; display:inline-flex; align-items:center; justify-content:center }
+    .navbar-search-icon:hover { background: rgba(15,23,42,0.04); transform: translateY(-1px) }
+
+    .navbar-search-icon .dot { top: -3px; right: -4px; width:10px; height:10px }
+    .navbar-right button { padding:6px 12px; border-radius:24px; font-size:14px }
 
     /* ensure hamburger remains visible and clickable */
     .navbar-hamburger { display: block; }
