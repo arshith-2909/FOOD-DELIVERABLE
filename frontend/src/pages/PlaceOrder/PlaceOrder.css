@@ -1,14 +1,48 @@
-/* Place order responsive basics */
-.placeorder-container{
-	display:flex;
-	gap:24px;
-	align-items:flex-start;
+/* PlaceOrder page styles */
+.placeorder-page{
+	max-width:1100px;
+	margin:18px auto;
+	padding:18px;
+	display:grid;
+	grid-template-columns: 1fr 360px;
+	gap:20px;
+	align-items:start;
 }
 
-.placeorder-form{ flex:1 1 60%; }
-.placeorder-summary{ flex:0 0 320px; }
+.po-container{
+	background:#fff;
+	padding:16px;
+	border-radius:10px;
+	box-shadow:0 8px 20px rgba(2,6,23,0.04);
+}
+
+.po-container h2{ margin-bottom:12px }
+
+.po-form{ display:flex; flex-direction:column; gap:12px }
+.po-form label{ display:block; font-size:0.95rem; color:#111827 }
+.po-form input{ width:100%; padding:10px 12px; border-radius:8px; border:1px solid #e6e9ef; margin-top:6px }
+
+.row.two{ display:grid; grid-template-columns:1fr 1fr; gap:12px }
+
+.field-error{ color:#b00020; font-size:0.85rem; margin-top:6px }
+
+.po-actions{ margin-top:8px }
+.button, .submit{ padding:10px 16px; background:#ff5722; color:#fff; border:none; border-radius:8px; cursor:pointer }
+
+.po-summary{ background:#fff; padding:16px; border-radius:10px; box-shadow:0 8px 20px rgba(2,6,23,0.04) }
+.po-summary h3{ margin:0 0 12px 0 }
+.summary-row{ display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px dashed rgba(0,0,0,0.04) }
+.summary-row.grand{ font-weight:800; font-size:1.05rem; border-bottom:none; margin-top:8px }
 
 @media (max-width:900px){
-	.placeorder-container{ flex-direction:column; }
-	.placeorder-summary{ width:100%; }
+	.placeorder-page{ grid-template-columns: 1fr 320px }
 }
+
+@media (max-width:720px){
+	.placeorder-page{ grid-template-columns: 1fr; padding:12px }
+	.po-summary{ order: 2 }
+	.po-container{ order: 1 }
+	.row.two{ grid-template-columns: 1fr }
+	.po-form input{ padding:8px 10px }
+}
+
